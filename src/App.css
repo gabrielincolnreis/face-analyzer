@@ -87,6 +87,11 @@ body {
   width: 100%;
 }
 
+.results-panels-container {
+  display: flex;
+  gap: 24px;
+}
+
 .app-footer {
   text-align: center;
   padding: 20px 24px;
@@ -136,49 +141,6 @@ body {
 @keyframes livePulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(0.8); }
-}
-
-/* =========== Result Cards =========== */
-
-.result-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px;
-  backdrop-filter: blur(10px);
-  transition: background 0.2s ease;
-  animation: cardIn 0.4s ease forwards;
-}
-
-.result-card:hover {
-  background: var(--bg-card-hover);
-}
-
-@keyframes cardIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.result-card h3 {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.card-icon {
-  font-size: 1.1rem;
 }
 
 /* Demographics */

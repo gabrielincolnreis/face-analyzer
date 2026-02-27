@@ -8,6 +8,8 @@ import { generateSuggestions } from './services/suggestionsService';
 import { loadProductModels, computeProductEmbeddings } from './services/productMatchingService';
 import { SAMPLE_PRODUCTS } from './data/sampleProducts';
 import './App.css';
+import SectionCard from './components/ui/SectionCard.jsx';
+import ProductRecommendations from './components/ProductRecommendations/ProductRecommendations.jsx';
 
 export default function App() {
   const [faceApiProgress, setFaceApiProgress] = useState(null);
@@ -102,12 +104,24 @@ export default function App() {
       </header>
 
       <main className="app-main">
-        <WebcamView ref={webcamRef} modelsReady={modelsReady} />
-        <ResultsPanel
-          results={results}
-          products={SAMPLE_PRODUCTS}
-          productEmbeddings={productEmbeddings}
-        />
+        <div className="results-panels-container">
+          <WebcamView ref={webcamRef} modelsReady={modelsReady} />
+          <ResultsPanel
+            results={results}
+          />
+        </div>
+        <SectionCard title="Recommended Products" icon="&#x1F6CD;">
+          {results?.suggestions?.occasion && (
+            <p className="occasion-line">
+              Likely shopping for: <strong>{results.suggestions.occasion.label}</strong>
+            </p>
+          )}
+          <ProductRecommendations
+            customerStyle={results?.clipData?.styles?.[0]?.label}
+            products={SAMPLE_PRODUCTS}
+            productEmbeddings={productEmbeddings}
+          />
+        </SectionCard>
       </main>
 
       <footer className="app-footer">

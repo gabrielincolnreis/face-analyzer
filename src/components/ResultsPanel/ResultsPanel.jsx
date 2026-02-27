@@ -1,5 +1,6 @@
 import './ResultsPanel.css';
 import ProductRecommendations from '../ProductRecommendations/ProductRecommendations.jsx';
+import SectionCard from '../ui/SectionCard.jsx';
 
 function ConfidenceBar({ value, color }) {
   return (
@@ -8,17 +9,6 @@ function ConfidenceBar({ value, color }) {
         className="confidence-fill"
         style={{ width: `${Math.round(value * 100)}%`, background: color || 'var(--accent)' }}
       />
-    </div>
-  );
-}
-
-function SectionCard({ title, icon, children }) {
-  return (
-    <div className="result-card">
-      <h3>
-        <span className="card-icon">{icon}</span> {title}
-      </h3>
-      {children}
     </div>
   );
 }
@@ -53,7 +43,7 @@ function ExpressionList({ expressions }) {
   );
 }
 
-export default function ResultsPanel({ results, products, productEmbeddings }) {
+export default function ResultsPanel({ results }) {
   if (!results) {
     return (
       <div className="results-panel results-empty">
@@ -78,24 +68,10 @@ export default function ResultsPanel({ results, products, productEmbeddings }) {
   }
 
   const { faceData, clipData, suggestions } = results;
-  const customerStyle = clipData?.styles?.[0]?.label || null;
 
   return (
     <div className="results-panel">
       <h2 className="results-title">Customer Insights</h2>
-
-      <SectionCard title="Recommended Products" icon="&#x1F6CD;">
-        {suggestions?.occasion && (
-          <p className="occasion-line">
-            Likely shopping for: <strong>{suggestions.occasion.label}</strong>
-          </p>
-        )}
-        <ProductRecommendations
-          customerStyle={customerStyle}
-          products={products}
-          productEmbeddings={productEmbeddings}
-        />
-      </SectionCard>
 
       <SectionCard title="Customer Profile" icon="&#x1F464;">
         <div className="demographics-grid">
