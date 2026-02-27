@@ -1,4 +1,5 @@
-import ProductRecommendations from './ProductRecommendations';
+import './ResultsPanel.css';
+import ProductRecommendations from '../ProductRecommendations/ProductRecommendations.jsx';
 
 function ConfidenceBar({ value, color }) {
   return (

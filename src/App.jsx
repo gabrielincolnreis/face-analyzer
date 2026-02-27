@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import WebcamView from './components/WebcamView';
-import ResultsPanel from './components/ResultsPanel';
-import LoadingScreen from './components/LoadingScreen';
+import WebcamView from './components/WebcamView/WebcamView.jsx';
+import ResultsPanel from './components/ResultsPanel/ResultsPanel.jsx';
+import LoadingScreen from './components/LoadingScreen/LoadingScreen.jsx';
 import { loadFaceApiModels, detectFaces, extractFaceCrop } from './services/faceApiService';
 import { loadClipModel, classifyFace, isClipLoaded } from './services/clipService';
 import { generateSuggestions } from './services/suggestionsService';

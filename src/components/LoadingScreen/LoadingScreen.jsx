@@ -1,9 +1,12 @@
+import './LoadingScreen.css';
+
 export default function LoadingScreen({ faceApiProgress, clipProgress, productProgress }) {
   const faceApiDone = faceApiProgress?.step === 'Done';
   const clipReady = clipProgress?.status === 'ready';
   const productsDone = productProgress?.status === 'done';
   const allReady = faceApiDone && clipReady && productsDone;
 
+  
   const faceApiPercent = faceApiProgress
     ? Math.round((faceApiProgress.current / faceApiProgress.total) * 100)
     : 0;

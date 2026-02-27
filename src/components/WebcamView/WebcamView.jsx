@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, useCallback, forwardRef, useImperativeHandle } from 'react';
-import { detectFaces } from '../services/faceApiService';
+import { detectFaces } from '../../services/faceApiService';
+import './WebcanView.css';
 
 const WebcamView = forwardRef(function WebcamView({ modelsReady }, ref) {
   const videoRef = useRef(null);
@@ -46,7 +47,7 @@ const WebcamView = forwardRef(function WebcamView({ modelsReady }, ref) {
     };
   }, []);
 
-  const drawOverlay = useCallback(async () => {
+  const drawOverlay = useCallback(async (drawOverlay = null) => {
     if (!videoRef.current || !canvasRef.current || !modelsReady || videoRef.current.paused) {
       animFrameRef.current = requestAnimationFrame(drawOverlay);
       return;
@@ -95,9 +96,9 @@ const WebcamView = forwardRef(function WebcamView({ modelsReady }, ref) {
   }, [modelsReady]);
 
   useEffect(() => {
-    if (cameraReady && modelsReady) {
-      animFrameRef.current = requestAnimationFrame(drawOverlay);
-    }
+    // if (cameraReady && modelsReady) {
+    //   animFrameRef.current = requestAnimationFrame(drawOverlay);
+    // }
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };

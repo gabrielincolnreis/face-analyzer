@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { searchProducts } from '../services/productMatchingService';
+import './ProductRecommendations.css';
+import { searchProducts } from '../../services/productMatchingService';
 
 const PRESETS = [
   { id: 'date', label: 'Date Night', query: 'stylish outfit for a romantic date night out' },
